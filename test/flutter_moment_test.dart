@@ -1,10 +1,9 @@
+import 'package:flutter_datetime_handler/flutter_moment.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutter_datetime_handler/flutter_datetime_handler.dart';
 
 void main() {
   test('test if datePushedTo works', () {
-    final handler = DateTimeHandler();
+    final handler = Moment();
     var dt1 = DateTime(2020, 10, 30, 15, 0, 0);
 
     var dt2 = handler.datePushedTo(from: dt1, hour: -5);

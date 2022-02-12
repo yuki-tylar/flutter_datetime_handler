@@ -1,6 +1,6 @@
 library moment;
 
-class DateTimeHandler {
+class Moment {
   DateTime _clone(DateTime from) {
     return DateTime.fromMillisecondsSinceEpoch(from.millisecondsSinceEpoch);
   }
