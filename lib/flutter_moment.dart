@@ -1,5 +1,7 @@
 library moment;
 
+import 'package:intl/intl.dart';
+
 class Moment {
   DateTime _clone(DateTime from) {
     return DateTime.fromMillisecondsSinceEpoch(from.millisecondsSinceEpoch);
@@ -7,6 +9,25 @@ class Moment {
 
   bool isSameDay(DateTime dt1, DateTime dt2) {
     return dt1.year == dt2.year && dt1.month == dt2.month && dt1.day == dt2.day;
+  }
+
+  String format(
+    DateTime? dt, {
+    String format = 'yyyy-MM-dd hh:mm a',
+    bool removeYearIfPossible = false,
+  }) {
+    if (dt == null) {
+      return '';
+    } else {
+      if (removeYearIfPossible) {
+        DateTime now = DateTime.now();
+        if (now.year == dt.year) {
+          format = format.replaceFirst(RegExp(r'\W*yyyy\W*'), '');
+        }
+      }
+      DateFormat formatter = DateFormat(format);
+      return formatter.format(dt);
+    }
   }
 
   datePushedTo({
