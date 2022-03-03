@@ -3,15 +3,17 @@ library moment;
 import 'package:intl/intl.dart';
 
 class Moment {
-  DateTime _clone(DateTime from) {
+  Moment._();
+
+  static DateTime _clone(DateTime from) {
     return DateTime.fromMillisecondsSinceEpoch(from.millisecondsSinceEpoch);
   }
 
-  bool isSameDay(DateTime dt1, DateTime dt2) {
+  static bool isSameDay(DateTime dt1, DateTime dt2) {
     return dt1.year == dt2.year && dt1.month == dt2.month && dt1.day == dt2.day;
   }
 
-  String format(
+  static String format(
     DateTime? dt, {
     String format = 'yyyy-MM-dd hh:mm a',
     bool removeYearIfPossible = false,
@@ -30,7 +32,14 @@ class Moment {
     }
   }
 
-  datePushedTo({
+  static DateTime parse(
+    String input, {
+    format = 'yyyy-MM-dd hh:mm a',
+  }) {
+    return DateFormat(format).parse(input);
+  }
+
+  static DateTime datePushedTo({
     DateTime? from,
     int day = 0,
     int hour = 0,
